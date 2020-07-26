@@ -2,6 +2,7 @@
   package="com.covidinfo">
 
     <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
 
     <application
       android:name=".MainApplication"
@@ -14,7 +15,8 @@
       <activity
         android:name=".SplashActivity"
         android:theme="@style/SplashTheme"
-        android:label="@string/app_name">
+        android:label="@string/app_name"
+                android:launchMode="singleTask">
         <intent-filter>
             <action android:name="android.intent.action.MAIN" />
             <category android:name="android.intent.category.LAUNCHER" />
@@ -25,7 +27,7 @@
         android:name=".MainActivity"
         android:label="@string/app_name"
         android:configChanges="keyboard|keyboardHidden|orientation|screenSize|uiMode"
-        android:launchMode="singleTask"
+
         android:windowSoftInputMode="adjustResize"
         android:exported="true">
       </activity>
