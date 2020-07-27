@@ -122,9 +122,9 @@ export default class HomeScreen extends Component {
           `https://www.mapquestapi.com/geocoding/v1/reverse?key=4AqHlYO2GfvAzIYT4NwAbvhz7Ch2uat5&location=${lat},${lng}&includeRoadMetadata=true&includeNearestIntersection=true`,
         );
         var data = await res.json();
-        console.log(
-          `location got is : ${data.results[0].locations[0].adminArea3}`,
-        );
+        // console.log(
+        //   `location got is : ${data.results[0].locations[0].adminArea3}`,
+        // );
         getStateData(data.results[0].locations[0].adminArea3);
       };
 
