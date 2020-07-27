@@ -49,7 +49,7 @@ const styles = StyleSheet.create({
         alignItems: "stretch"
     },
     card: {
-        backgroundColor: "#fad9c1",
+        // backgroundColor: "#fad9c1",
         width: "45%",
         height: 70,
         borderRadius: 7,

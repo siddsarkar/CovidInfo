@@ -18,9 +18,11 @@ import {
     Text,
     Card,
     Icon,
-    Avatar
+    Avatar,
+    Divider
 } from 'react-native-elements';
 import StatsCard from './StatsCard';
+import NewsCards from './NewsCards';
 
 
 
@@ -106,7 +108,7 @@ export default class HomeScreen extends Component {
 
     getData = () => {
         this.setState(
-            this.setState({ refresh: true }),
+            this.setState({ loading: true }),
             () => {
                 try {
                     request(
@@ -214,10 +216,14 @@ export default class HomeScreen extends Component {
                     <Icon name='search' type='ionicons'></Icon>
                 </Header>
                 <ScrollView
-                    contentContainerStyle={styles.container}
-                    refreshControl={<RefreshControl refreshing={this.state.loading} onRefresh={this.getData} />} >
+                    refreshControl={<RefreshControl refreshing={this.state.loading} onRefresh={this.getData} vertical />} >
                     <StatsCard load={this.state.loading} data={this.state.covidDetails} />
-                    {preview}
+                    <View style={{ flexDirection: "row", alignItems: "center", justifyContent: "center" }}>
+                        <Text style={{ marginLeft: 10, fontSize: 24 }} >Latest News </Text>
+
+                    </View>
+                    <Divider></Divider>
+                    <NewsCards></NewsCards>
 
                 </ScrollView>
             </SafeAreaView >
@@ -227,7 +233,6 @@ export default class HomeScreen extends Component {
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
         // backgroundColor: 'lightblue',
         // alignItems: 'center',
         // justifyContent: 'center',
