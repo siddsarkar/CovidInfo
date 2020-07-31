@@ -22,7 +22,7 @@ export default class NewsCards extends Component {
 
   componentDidMount = async () => {
     let res = await fetch(
-      'https://newsapi.org/v2/everything?q=covid-19&apiKey=d1a2290192fa42ed85d67ee17caffc4f',
+      'https://newsapi.org/v2/top-headlines?country=in&apiKey=d1a2290192fa42ed85d67ee17caffc4f',
     );
     let data = await res.json();
     let newdata = data.articles.slice(0, 5);
@@ -41,9 +41,9 @@ export default class NewsCards extends Component {
                 image={{uri: `${item.urlToImage}`}}>
                 <Text style={styles.timestamp}>{item.publishedAt}</Text>
                 <Text style={styles.heading}>
-                  {item.title.substring(0, 30) + `...`}
+                  {item.title.substring(0, 30) + '...'}
                 </Text>
-                <Divider style={{marginVertical: 5}}></Divider>
+                <Divider style={{marginVertical: 5}} />
 
                 <Text style={styles.description}>{item.content}</Text>
                 <Button

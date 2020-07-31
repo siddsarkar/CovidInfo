@@ -7,7 +7,7 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "test": "jest",
-    "lint": "eslint ."
+    "lint": "eslint src/ --fix"
   },
   "dependencies": {
     "@react-native-community/geolocation": "^2.0.2",

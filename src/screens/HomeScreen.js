@@ -42,7 +42,7 @@ export default class HomeScreen extends Component {
             android: PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION,
           }),
         ).then((res) => {
-          if (res == 'granted') {
+          if (res === 'granted') {
             Geolocation.getCurrentPosition((posi) => {
               // console.log(`Your posisition, Latitude:${posi.coords.latitude} Longitude:${posi.coords.longitude}`);
               getStatename(posi);
@@ -102,7 +102,7 @@ export default class HomeScreen extends Component {
             android: PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION,
           }),
         ).then((res) => {
-          if (res == 'granted') {
+          if (res === 'granted') {
             Geolocation.getCurrentPosition((posi) => {
               // console.log(`Your posisition, Latitude:${posi.coords.latitude} Longitude:${posi.coords.longitude}`);
               getStatename(posi);
@@ -220,7 +220,7 @@ export default class HomeScreen extends Component {
           <Text style={{fontSize: 20, position: 'relative', fontWeight: '700'}}>
             COVID-19 STATUS{' '}
           </Text>
-          <Icon name="search" type="ionicons"></Icon>
+          <Icon name="search" type="ionicons" />
         </Header>
         <ScrollView
           refreshControl={
@@ -239,9 +239,8 @@ export default class HomeScreen extends Component {
             }}>
             <Text style={{marginLeft: 10, fontSize: 24}}>Latest News </Text>
           </View>
-          <Divider
-            style={{width: '50%', alignSelf: 'center', height: 2}}></Divider>
-          <NewsCards></NewsCards>
+          <Divider style={{width: '50%', alignSelf: 'center', height: 2}} />
+          <NewsCards />
         </ScrollView>
       </SafeAreaView>
     );
