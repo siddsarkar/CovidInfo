@@ -1,8 +1,9 @@
 package com.covidinfo;
 
 import com.facebook.react.ReactActivity;
-import org.devio.rn.splashscreen.SplashScreen; // Import this.
-import android.os.Bundle; // Import this.
+
+import android.os.Bundle;
+import org.devio.rn.splashscreen.SplashScreen;
 
 
 public class MainActivity extends ReactActivity {
@@ -13,7 +14,7 @@ public class MainActivity extends ReactActivity {
    */
   @Override
   protected void onCreate(Bundle savedInstanceState) {
-    SplashScreen.show(this);
+    SplashScreen.show(this, R.style.SplashStatusBarTheme);
     super.onCreate(savedInstanceState);
   }
   @Override

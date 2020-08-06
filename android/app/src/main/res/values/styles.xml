@@ -18,10 +18,9 @@
     <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:statusBarColor">@color/splashscreen_bg</item>
         <item name="android:background">@drawable/background_splash</item>
-        <item name="android:windowLightStatusBar">true</item>
     </style>
-    <style name="SplashScreenTheme" parent="SplashScreen_SplashTheme">
-        <item name="colorPrimaryDark">@color/status_bar_color</item>
+    <style name="SplashStatusBarTheme" parent="SplashScreen_SplashTheme">
+        <item name="android:statusBarColor">@color/splashscreen_bg</item>
     </style>
 
 </resources>

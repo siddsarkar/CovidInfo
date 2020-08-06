@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import Geolocation from '@react-native-community/geolocation';
 import {PERMISSIONS, request} from 'react-native-permissions';
-
+import SplashScreen from 'react-native-splash-screen';
+import Header from '../components/header';
 import {
   StyleSheet,
   SafeAreaView,
@@ -13,9 +14,9 @@ import {
   StatusBar,
 } from 'react-native';
 
-import {Header, Text, Card, Icon, Avatar, Divider} from 'react-native-elements';
-import StatsCard from './StatsCard';
-import NewsCards from './NewsCards';
+import {Text, Card, Divider} from 'react-native-elements';
+import StatsCard from '../components/StatsCard';
+import NewsCards from '../components/NewsCards';
 
 export default class HomeScreen extends Component {
   state = {
@@ -35,6 +36,7 @@ export default class HomeScreen extends Component {
   };
 
   componentDidMount() {
+    SplashScreen.hide();
     this.setState(this.setState({loading: true}), () => {
       try {
         request(
@@ -102,7 +104,7 @@ export default class HomeScreen extends Component {
             android: PERMISSIONS.ANDROID.ACCESS_FINE_LOCATION,
           }),
         ).then((res) => {
-          if (res === 'granted') {
+          if (res == 'granted') {
             Geolocation.getCurrentPosition((posi) => {
               // console.log(`Your posisition, Latitude:${posi.coords.latitude} Longitude:${posi.coords.longitude}`);
               getStatename(posi);
@@ -157,71 +159,11 @@ export default class HomeScreen extends Component {
   };
 
   render() {
-    let preview;
-    const loader = (
-      <View style={[styles.container, styles.horizontal]}>
-        <ActivityIndicator size="large" color="blue" />
-      </View>
-    );
-    const dataView = (
-      <Card
-        titleStyle={styles.cardTitle}
-        title="Latest Updates"
-        containerStyle={styles.card}>
-        <View style={styles.cardItems}>
-          <Text style={styles.cardItemsText}>
-            {' '}
-            State: {this.state.covidDetails.statename}
-          </Text>
-        </View>
-        <View style={styles.cardItems}>
-          <Text style={styles.cardItemsText}>
-            {' '}
-            Active: {this.state.covidDetails.active}
-          </Text>
-        </View>
-        <View style={styles.cardItems}>
-          <Text style={styles.cardItemsText}>
-            {' '}
-            Confirmed: {this.state.covidDetails.confirmed}
-          </Text>
-        </View>
-        <View style={styles.cardItems}>
-          <Text style={styles.cardItemsText}>
-            {' '}
-            Deaths: {this.state.covidDetails.deaths}
-          </Text>
-        </View>
-        <View style={styles.cardItems}>
-          <Text style={styles.cardItemsText}>
-            {' '}
-            Recovered: {this.state.covidDetails.recovered}
-          </Text>
-        </View>
-      </Card>
-    );
-
-    if (this.state.loading) {
-      preview = loader;
-    } else {
-      preview = dataView;
-    }
-
     return (
       <SafeAreaView style={styles.container}>
         <StatusBar barStyle="dark-content" backgroundColor="#a6dcef" />
-        <Header barStyle="dark-content" containerStyle={styles.header}>
-          <Avatar
-            containerStyle={{borderWidth: 2}}
-            rounded
-            size="small"
-            source={require('../assets/pp.jpg')}
-          />
-          <Text style={{fontSize: 20, position: 'relative', fontWeight: '700'}}>
-            COVID-19 STATUS{' '}
-          </Text>
-          <Icon name="search" type="ionicons" />
-        </Header>
+        <Header />
+
         <ScrollView
           refreshControl={
             <RefreshControl
@@ -278,8 +220,8 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   header: {
-    backgroundColor: '#a6dcef',
-    shadowColor: '#000',
+    // backgroundColor: '#a6dcef',
+    // shadowColor: '#000',
     shadowOffset: {
       width: 0,
       height: 2,

@@ -1,6 +1,6 @@
-import React, {Component} from 'react';
+import React from 'react';
 import {View, StyleSheet} from 'react-native';
-import {Card, Icon, Text} from 'react-native-elements';
+import {Card, Text} from 'react-native-elements';
 
 const StatsCard = (props) => {
   return (

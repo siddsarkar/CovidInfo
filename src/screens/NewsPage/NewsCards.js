@@ -1,21 +1,19 @@
 // https://newsapi.org/v2/top-headlines?country=in&apiKey=d1a2290192fa42ed85d67ee17caffc4f
 import React, {Component} from 'react';
-import {View, ScrollView, StyleSheet, Linking} from 'react-native';
 import {
-  ThemeProvider,
-  Header,
-  Button,
-  Card,
-  Icon,
-  Text,
-  Divider,
-} from 'react-native-elements';
+  View,
+  ScrollView,
+  StyleSheet,
+  Linking,
+  ActivityIndicator,
+} from 'react-native';
+import {Button, Card, Text, Divider} from 'react-native-elements';
 
 export default class NewsCards extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      cardloading: false,
+      cardloading: true,
       news: [],
     };
   }
@@ -26,11 +24,20 @@ export default class NewsCards extends Component {
     );
     let data = await res.json();
     let newdata = data.articles.slice(0, 5);
-    this.setState({news: newdata});
+    this.setState({news: newdata, cardloading: false});
   };
 
   render() {
-    return (
+    return this.state.cardloading ? (
+      <View
+        style={{
+          ...styles.container,
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}>
+        <ActivityIndicator size="large" color="red" />
+      </View>
+    ) : (
       <ScrollView style={styles.container} horizontal>
         {this.state.news.map((item) => {
           return (
@@ -69,7 +76,7 @@ export default class NewsCards extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    height: 500,
+    height: 420,
   },
   card: {
     width: 300,
