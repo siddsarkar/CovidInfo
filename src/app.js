@@ -10,6 +10,8 @@ import {TransitionPresets} from '@react-navigation/stack';
 //import Screens
 import RootPage from './screens/RootPage';
 import NewsPageNavigator from './screens/NewsPage';
+import SearchPageNavigator from './screens/SearchPage';
+import TimeSeriesPage from './screens/TimeSeriesPage';
 
 SplashScreen.hide();
 const Drawer = createDrawerNavigator();
@@ -24,10 +26,10 @@ function MainPageNavigator() {
     >
       <MainStack.Screen name="Root" component={RootPage} />
       <MainStack.Screen name="News" component={NewsPageNavigator} />
+      <MainStack.Screen name="Search" component={SearchPageNavigator} />
       {/* <MainStack.Screen name="Stats" component={StatsPage}/> */}
-      {/* <MainStack.Screen name="Measures" component={MeasuresPage}/> */}
+      <MainStack.Screen name="Time" component={TimeSeriesPage} />
       {/* <MainStack.Screen name="Hospitals" component={HospitalsPage}/> */}
-      {/* <MainStack.Screen name="Search" component={SearchPage}/> */}
       {/* <MainStack.Screen name="Links" component={LinksPage}/> */}
     </MainStack.Navigator>
   );

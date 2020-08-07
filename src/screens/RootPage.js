@@ -24,6 +24,7 @@ class RootPage extends Component {
   }
 
   render() {
+    const {navigation} = this.props;
     return (
       <>
         <StatusBar backgroundColor="#fff" barStyle="dark-content" />
@@ -70,7 +71,7 @@ class RootPage extends Component {
               // backgroundColor: 'grey',
               display: 'flex',
             }}>
-            <MenuCards />
+            <MenuCards navigation={navigation} />
           </View>
           <View
             style={{

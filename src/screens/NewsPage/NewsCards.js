@@ -22,6 +22,7 @@ export default class NewsCards extends Component {
       cardloading: true,
       news: [],
       isLocal: true,
+      refreshing: false,
     };
   }
 
@@ -92,76 +93,83 @@ export default class NewsCards extends Component {
           />
           <Text style={material.body2}>LOCAL</Text>
         </View>
-        <ScrollView
-          style={{marginHorizontal: 10, marginVertical: 10}}
-          refreshControl={
-            <RefreshControl
-              refreshing={this.state.cardloading}
-              onRefresh={() =>
-                this.state.isLocal
-                  ? this.makeRequest()
-                  : this.makeRequestGlobalNews()
-              }
-            />
-          }>
-          {this.state.news.map((item) => {
-            return (
-              <View key={item.publishedAt} style={{padding: 10}}>
-                <Card
-                  containerStyle={{
-                    backgroundColor: '#DCDCDC',
-                    borderWidth: 0,
+        {this.state.cardloading ? (
+          <View
+            style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+            <ActivityIndicator size="large" color="#000" />
+          </View>
+        ) : (
+          <ScrollView
+            style={{marginHorizontal: 10}}
+            refreshControl={
+              <RefreshControl
+                refreshing={this.state.refreshing}
+                onRefresh={() =>
+                  this.state.isLocal
+                    ? this.makeRequest()
+                    : this.makeRequestGlobalNews()
+                }
+              />
+            }>
+            {this.state.news.map((item) => {
+              return (
+                <View key={item.publishedAt} style={{padding: 10}}>
+                  <Card
+                    containerStyle={{
+                      backgroundColor: '#DCDCDC',
+                      borderWidth: 0,
 
-                    shadowColor: '#000',
-                    shadowOffset: {
-                      width: 0,
-                      height: 2,
-                    },
-                    shadowOpacity: 0.25,
-                    shadowRadius: 3.84,
-                    elevation: 5,
-                    margin: 0,
-                    padding: 0,
-                  }}>
-                  <ImageBackground
-                    style={{
-                      top: 0,
+                      shadowColor: '#000',
+                      shadowOffset: {
+                        width: 0,
+                        height: 2,
+                      },
+                      shadowOpacity: 0.25,
+                      shadowRadius: 3.84,
+                      elevation: 5,
+                      margin: 0,
+                      padding: 0,
+                    }}>
+                    <ImageBackground
+                      style={{
+                        top: 0,
 
-                      left: 0,
-                      height: 150,
-                      width: '100%',
-                    }}
-                    source={{uri: `${item.urlToImage}`}}
-                  />
-                  <View style={{padding: 10}}>
-                    <Text style={material.caption}>{item.publishedAt}</Text>
-                    <Text style={material.headline}>
-                      {item.title.substring(0, 50)}
-                    </Text>
-                    <Divider style={{marginVertical: 5}} />
-
-                    <Text style={material.body1}>{item.content}</Text>
-                    <Button
-                      onPress={() =>
-                        this.props.navigation.push('article', {url: item.url})
-                      }
-                      buttonStyle={{
-                        width: 100,
-                        marginTop: 10,
-                        // padding: 5,
-                        // borderRadius: 0,
-                        // marginLeft: 0,
-                        // marginRight: 0,
-                        // marginBottom: 0,
+                        left: 0,
+                        height: 150,
+                        width: '100%',
                       }}
-                      title="VIEW NOW"
+                      source={{uri: `${item.urlToImage}`}}
                     />
-                  </View>
-                </Card>
-              </View>
-            );
-          })}
-        </ScrollView>
+                    <View style={{padding: 10}}>
+                      <Text style={material.caption}>{item.publishedAt}</Text>
+                      <Text style={material.headline}>
+                        {item.title.substring(0, 50)}
+                      </Text>
+                      <Divider style={{marginVertical: 5}} />
+
+                      <Text style={material.body1}>{item.content}</Text>
+                      <Button
+                        onPress={() =>
+                          this.props.navigation.push('article', {url: item.url})
+                        }
+                        buttonStyle={{
+                          width: 100,
+                          marginTop: 10,
+                          // padding: 5,
+                          // borderRadius: 0,
+                          // marginLeft: 0,
+                          // marginRight: 0,
+                          // marginBottom: 0,
+                        }}
+                        title="VIEW NOW"
+                      />
+                    </View>
+                  </Card>
+                </View>
+              );
+            })}
+          </ScrollView>
+        )}
       </>
     );
   }

@@ -5,8 +5,8 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import {Avatar} from 'react-native-elements';
 import {material} from 'react-native-typography';
 
-const MenuCards = () => {
-  const navigation = useNavigation();
+const MenuCards = ({navigation}) => {
+  // const navigation = useNavigation();
   return (
     <>
       <View style={{flexDirection: 'row', height: 95, marginBottom: 10}}>
@@ -104,7 +104,6 @@ const MenuCards = () => {
 
       <View style={{flexDirection: 'row', height: 95, marginBottom: 10}}>
         <TouchableOpacity
-          onPress={() => navigation.push('News')}
           style={{
             backgroundColor: '#3B3B98',
             borderWidth: 0,
@@ -147,6 +146,7 @@ const MenuCards = () => {
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
+          onPress={() => navigation.push('Time')}
           style={{
             backgroundColor: '#82589F',
             borderWidth: 0,
@@ -177,7 +177,7 @@ const MenuCards = () => {
               top: 30,
               position: 'absolute',
             }}>
-            LOCAL
+            DAYWISE
           </Text>
           <Text
             style={{
@@ -186,13 +186,12 @@ const MenuCards = () => {
               left: 5,
               ...material.display2White,
             }}>
-            MEDIC
+            CASES
           </Text>
         </TouchableOpacity>
       </View>
       <View style={{flexDirection: 'row', height: 95, marginBottom: 10}}>
         <TouchableOpacity
-          onPress={() => navigation.push('News')}
           style={{
             backgroundColor: '#BDC581',
             borderWidth: 0,
@@ -236,6 +235,7 @@ const MenuCards = () => {
           </Text>
         </TouchableOpacity>
         <TouchableOpacity
+          onPress={() => navigation.push('Search')}
           style={{
             backgroundColor: '#58B19F',
             borderWidth: 0,
