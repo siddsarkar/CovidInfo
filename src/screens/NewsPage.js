@@ -8,13 +8,20 @@ import {material} from 'react-native-typography';
 import {Divider} from 'react-native-elements';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-class NewsPage extends Component {
-  state = {
-    isLoading: true,
-  };
-  render() {
-    return (
-      <>
+const NewsStack = createStackNavigator();
+
+function NewsStackNavigator() {
+  return (
+    <NewsStack.Navigator initialRouteName="Main">
+      <NewsStack.Screen name="Main" component={NewsPage} />
+      <NewsStack.Screen name="Article" component={WebViewComponent} />
+    </NewsStack.Navigator>
+  );
+}
+
+const NewsPage = () => {
+  return (
+    <>
         <AppHeader title={'NEWS'} />
         <View style={{left: 10, top: 10}}>
           <Text style={material.headline}>
