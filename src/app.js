@@ -9,7 +9,7 @@ import {TransitionPresets} from '@react-navigation/stack';
 
 //import Screens
 import RootPage from './screens/RootPage';
-import NewsPage from './screens/NewsPage';
+import NewsPageNavigator from './screens/NewsPage';
 
 SplashScreen.hide();
 const Drawer = createDrawerNavigator();
@@ -23,7 +23,7 @@ function MainPageNavigator() {
       // screenOptions={{...TransitionPresets.SlideFromRightIOS}}
     >
       <MainStack.Screen name="Root" component={RootPage} />
-      <MainStack.Screen name="News" component={NewsPage} />
+      <MainStack.Screen name="News" component={NewsPageNavigator} />
       {/* <MainStack.Screen name="Stats" component={StatsPage}/> */}
       {/* <MainStack.Screen name="Measures" component={MeasuresPage}/> */}
       {/* <MainStack.Screen name="Hospitals" component={HospitalsPage}/> */}

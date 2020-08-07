@@ -18,9 +18,13 @@
     <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="android:statusBarColor">@color/splashscreen_bg</item>
         <item name="android:background">@drawable/background_splash</item>
+        <!-- Add the following line to set the default status bar text color for all the app 
+        to be a light color (false) or a dark color (true) -->
+        <item name="android:windowLightStatusBar">true</item>
     </style>
     <style name="SplashStatusBarTheme" parent="SplashScreen_SplashTheme">
         <item name="android:statusBarColor">@color/splashscreen_bg</item>
+        <item name="android:windowLightStatusBar">true</item>
     </style>
 
 </resources>
