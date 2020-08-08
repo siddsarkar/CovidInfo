@@ -16,11 +16,9 @@ export default function NewsPageNavigator() {
   );
 }
 
-const NewsPage = ({navigation}) => {
-  return (
-    <>
-      <AppHeader title="HEADLINES" alignment="center" />
-      <NewsCards navigation={navigation} />
-    </>
-  );
-};
+const NewsPage = ({navigation}) => (
+  <>
+    <AppHeader title="HEADLINES" alignment="center" />
+    <NewsCards navigation={navigation} />
+  </>
+);

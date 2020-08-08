@@ -1,15 +1,13 @@
-import {View, Text, TouchableOpacity} from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import React from 'react';
-import {useNavigation} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {Avatar} from 'react-native-elements';
-import {material} from 'react-native-typography';
+import { Avatar } from 'react-native-elements';
+import { material } from 'react-native-typography';
 
-const MenuCards = ({navigation}) => {
-  // const navigation = useNavigation();
+const MenuCards = ({ navigation }) => {
   return (
     <>
-      <View style={{flexDirection: 'row', height: 95, marginBottom: 10}}>
+      <View style={{ flexDirection: 'row', height: 95, marginBottom: 10 }}>
         <TouchableOpacity
           onPress={() => navigation.push('News')}
           style={{
@@ -75,7 +73,7 @@ const MenuCards = ({navigation}) => {
             elevation: 6,
           }}>
           <Icon
-            style={{position: 'absolute', top: 10, right: 10}}
+            style={{ position: 'absolute', top: 10, right: 10 }}
             name="stats-chart"
             size={35}
             color="#fff"
@@ -102,7 +100,7 @@ const MenuCards = ({navigation}) => {
         </TouchableOpacity>
       </View>
 
-      <View style={{flexDirection: 'row', height: 95, marginBottom: 10}}>
+      <View style={{ flexDirection: 'row', height: 95, marginBottom: 10 }}>
         <TouchableOpacity
           style={{
             backgroundColor: '#3B3B98',
@@ -121,7 +119,7 @@ const MenuCards = ({navigation}) => {
             elevation: 6,
           }}>
           <Icon
-            style={{position: 'absolute', top: 10, right: 10}}
+            style={{ position: 'absolute', top: 10, right: 10 }}
             name="fitness-outline"
             size={35}
             color="#fff"
@@ -164,7 +162,7 @@ const MenuCards = ({navigation}) => {
             elevation: 6,
           }}>
           <Icon
-            style={{position: 'absolute', top: 10, right: 10}}
+            style={{ position: 'absolute', top: 10, right: 10 }}
             name="medical"
             size={35}
             color="#fff"
@@ -190,7 +188,7 @@ const MenuCards = ({navigation}) => {
           </Text>
         </TouchableOpacity>
       </View>
-      <View style={{flexDirection: 'row', height: 95, marginBottom: 10}}>
+      <View style={{ flexDirection: 'row', height: 95, marginBottom: 10 }}>
         <TouchableOpacity
           style={{
             backgroundColor: '#BDC581',
@@ -209,7 +207,7 @@ const MenuCards = ({navigation}) => {
             elevation: 6,
           }}>
           <Icon
-            style={{position: 'absolute', top: 10, right: 10}}
+            style={{ position: 'absolute', top: 10, right: 10 }}
             name="link"
             size={35}
             color="#fff"
@@ -253,7 +251,7 @@ const MenuCards = ({navigation}) => {
             elevation: 6,
           }}>
           <Icon
-            style={{position: 'absolute', top: 10, right: 10}}
+            style={{ position: 'absolute', top: 10, right: 10 }}
             name="search"
             size={35}
             color="#fff"
@@ -280,7 +278,7 @@ const MenuCards = ({navigation}) => {
         </TouchableOpacity>
       </View>
 
-      <View style={{flexDirection: 'row', height: 95, marginTop: 15}}>
+      <View style={{ flexDirection: 'row', height: 95, marginTop: 15 }}>
         <TouchableOpacity
           style={{
             backgroundColor: '#2C3A47',
@@ -310,9 +308,10 @@ const MenuCards = ({navigation}) => {
               uri:
                 'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
             }}
-            rounded></Avatar>
-          <View style={{width: 200, flexDirection: 'column'}}>
-            <Text style={{...material.display1White, fontSize: 24}}>
+            rounded
+          />
+          <View style={{ width: 200, flexDirection: 'column' }}>
+            <Text style={{ ...material.display1White, fontSize: 24 }}>
               How Are You
             </Text>
             <Text
@@ -324,14 +323,14 @@ const MenuCards = ({navigation}) => {
             </Text>
           </View>
           <Icon
-            style={{position: 'absolute', right: 20}}
+            style={{ position: 'absolute', right: 20 }}
             name="chevron-forward"
             size={30}
             color="#fff"
           />
         </TouchableOpacity>
       </View>
-      <View style={{flexDirection: 'row', height: 300, marginTop: 25}}>
+      <View style={{ flexDirection: 'row', height: 300, marginTop: 25 }}>
         <TouchableOpacity
           style={{
             backgroundColor: '#CAD3C8',
@@ -356,9 +355,13 @@ const MenuCards = ({navigation}) => {
               paddingLeft: 20,
               justifyContent: 'space-between',
             }}>
-            <Text style={{...material.display1, fontSize: 20}}>
+            <Text style={{ ...material.display1, fontSize: 20 }}>
               <Text
-                style={{...material.headline, fontWeight: '700', fontSize: 20}}>
+                style={{
+                  ...material.headline,
+                  fontWeight: '700',
+                  fontSize: 20,
+                }}>
                 Situation
               </Text>{' '}
               (Global)
@@ -370,5 +373,4 @@ const MenuCards = ({navigation}) => {
     </>
   );
 };
-
 export default MenuCards;

@@ -5,7 +5,6 @@ import SplashScreen from 'react-native-splash-screen';
 import {NavigationContainer} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {createDrawerNavigator} from '@react-navigation/drawer';
-import {TransitionPresets} from '@react-navigation/stack';
 
 //import Screens
 import RootPage from './screens/RootPage';
@@ -34,18 +33,6 @@ function MainPageNavigator() {
     </MainStack.Navigator>
   );
 }
-
-const config = {
-  animation: 'spring',
-  config: {
-    stiffness: 1000,
-    damping: 500,
-    mass: 3,
-    overshootClamping: true,
-    restDisplacementThreshold: 0.01,
-    restSpeedThreshold: 0.01,
-  },
-};
 
 export default function App() {
   const [initRender, setInitRender] = useState(true);

@@ -1,12 +1,11 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Geolocation from '@react-native-community/geolocation';
-import {PERMISSIONS, request} from 'react-native-permissions';
+import { PERMISSIONS, request } from 'react-native-permissions';
 import SplashScreen from 'react-native-splash-screen';
 import Header from '../components/header';
 import {
   StyleSheet,
   SafeAreaView,
-  ActivityIndicator,
   View,
   Platform,
   RefreshControl,
@@ -14,7 +13,7 @@ import {
   StatusBar,
 } from 'react-native';
 
-import {Text, Card, Divider} from 'react-native-elements';
+import { Text, Divider } from 'react-native-elements';
 import StatsCard from '../components/StatsCard';
 import NewsCards from '../components/NewsCards';
 
@@ -37,7 +36,11 @@ export default class HomeScreen extends Component {
 
   componentDidMount() {
     SplashScreen.hide();
-    this.setState(this.setState({loading: true}), () => {
+    this.makerequest();
+  }
+
+  makerequest = () => {
+    this.setState(this.setState({ loading: true }), () => {
       try {
         request(
           Platform.select({
@@ -58,25 +61,25 @@ export default class HomeScreen extends Component {
       }
 
       var getStatename = async (posi) => {
-        var lat = posi.coords.latitude;
-        var lng = posi.coords.longitude;
-        var res = await fetch(
+        const lat = posi.coords.latitude;
+        const lng = posi.coords.longitude;
+        const res = await fetch(
           `https://www.mapquestapi.com/geocoding/v1/reverse?key=4AqHlYO2GfvAzIYT4NwAbvhz7Ch2uat5&location=${lat},${lng}&includeRoadMetadata=true&includeNearestIntersection=true`,
         );
-        var data = await res.json();
+        const data = await res.json();
         // console.log(`location got is : ${data.results[0].locations[0].adminArea3}`);
         getStateData(data.results[0].locations[0].adminArea3);
       };
 
       var getStateData = async (information) => {
         const API_URL = 'https://api.covid19india.org/data.json';
-        let res = await fetch(API_URL);
-        let info = await res.json();
-        let matches = info.statewise.filter((items) => {
-          let rgx = new RegExp(`^${information}`, 'gi');
+        const res = await fetch(API_URL);
+        const info = await res.json();
+        const matches = info.statewise.filter((items) => {
+          const rgx = new RegExp(`^${information}`, 'gi');
           return items.state.match(rgx) || items.statecode.match(rgx);
         });
-        let match = matches[0];
+        const match = matches[0];
         if (match === undefined) {
           alert('match not found');
         } else {
@@ -94,10 +97,10 @@ export default class HomeScreen extends Component {
         }
       };
     });
-  }
+  };
 
   getData = () => {
-    this.setState(this.setState({loading: true}), () => {
+    this.setState(this.setState({ loading: true }), () => {
       try {
         request(
           Platform.select({
@@ -118,12 +121,12 @@ export default class HomeScreen extends Component {
       }
 
       var getStatename = async (posi) => {
-        var lat = posi.coords.latitude;
-        var lng = posi.coords.longitude;
-        var res = await fetch(
+        const lat = posi.coords.latitude;
+        const lng = posi.coords.longitude;
+        const res = await fetch(
           `https://www.mapquestapi.com/geocoding/v1/reverse?key=4AqHlYO2GfvAzIYT4NwAbvhz7Ch2uat5&location=${lat},${lng}&includeRoadMetadata=true&includeNearestIntersection=true`,
         );
-        var data = await res.json();
+        const data = await res.json();
         // console.log(
         //   `location got is : ${data.results[0].locations[0].adminArea3}`,
         // );
@@ -132,13 +135,13 @@ export default class HomeScreen extends Component {
 
       var getStateData = async (information) => {
         const API_URL = 'https://api.covid19india.org/data.json';
-        let res = await fetch(API_URL);
-        let info = await res.json();
-        let matches = info.statewise.filter((items) => {
-          let rgx = new RegExp(`^${information}`, 'gi');
+        const res = await fetch(API_URL);
+        const info = await res.json();
+        const matches = info.statewise.filter((items) => {
+          const rgx = new RegExp(`^${information}`, 'gi');
           return items.state.match(rgx) || items.statecode.match(rgx);
         });
-        let match = matches[0];
+        const match = matches[0];
         if (match === undefined) {
           alert('match not found');
         } else {
@@ -179,9 +182,9 @@ export default class HomeScreen extends Component {
               alignItems: 'center',
               justifyContent: 'center',
             }}>
-            <Text style={{marginLeft: 10, fontSize: 24}}>Latest News </Text>
+            <Text style={{ marginLeft: 10, fontSize: 24 }}>Latest News </Text>
           </View>
-          <Divider style={{width: '50%', alignSelf: 'center', height: 2}} />
+          <Divider style={{ width: '50%', alignSelf: 'center', height: 2 }} />
           <NewsCards />
         </ScrollView>
       </SafeAreaView>

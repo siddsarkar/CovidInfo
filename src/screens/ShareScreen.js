@@ -1,12 +1,12 @@
 import React from 'react';
 //import react in our code.
-import {StyleSheet, View, Text} from 'react-native';
+import {StyleSheet, View} from 'react-native';
 // import all basic components
 // import Pie from 'react-native-pie';
 // // import pie to make pie chart
 
 export default function ShareScreen() {
-  return <View style={styles.container}></View>;
+  return <View style={styles.container} />;
 }
 
 const styles = StyleSheet.create({

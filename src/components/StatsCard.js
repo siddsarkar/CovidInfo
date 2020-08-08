@@ -2,46 +2,44 @@ import React from 'react';
 import {View, StyleSheet} from 'react-native';
 import {Card, Text} from 'react-native-elements';
 
-const StatsCard = (props) => {
-  return (
-    <View style={styles.statscard}>
-      <View
-        style={{
-          justifyContent: 'space-between',
-          flexDirection: 'column',
-          alignItems: 'center',
-          height: 120,
-        }}>
-        <Text style={{color: 'grey', fontSize: 14}}>Your Location is</Text>
-        <Text style={{fontSize: 54, fontWeight: '900', letterSpacing: 0}}>
-          {props.data.statename}
-        </Text>
+const StatsCard = (props) => (
+  <View style={styles.statscard}>
+    <View
+      style={{
+        justifyContent: 'space-between',
+        flexDirection: 'column',
+        alignItems: 'center',
+        height: 120,
+      }}>
+      <Text style={{color: 'grey', fontSize: 14}}>Your Location is</Text>
+      <Text style={{fontSize: 54, fontWeight: '900', letterSpacing: 0}}>
+        {props.data.statename}
+      </Text>
 
-        <Text style={{color: 'grey', fontSize: 11}}>{Date()}</Text>
-      </View>
-      <View style={styles.row}>
-        <Card containerStyle={styles.card}>
-          <Text style={styles.descText}>Active Cases:</Text>
-          <Text style={styles.numCount}>{props.data.active}</Text>
-        </Card>
-        <Card containerStyle={styles.card}>
-          <Text style={styles.descText}>Confirmed Cases:</Text>
-          <Text style={styles.numCount}>{props.data.confirmed}</Text>
-        </Card>
-      </View>
-      <View style={styles.row}>
-        <Card containerStyle={styles.card}>
-          <Text style={styles.descText}>Deaths:</Text>
-          <Text style={styles.numCount}>{props.data.deaths}</Text>
-        </Card>
-        <Card containerStyle={styles.card}>
-          <Text style={styles.descText}>Recovered:</Text>
-          <Text style={styles.numCount}>{props.data.recovered}</Text>
-        </Card>
-      </View>
+      <Text style={{color: 'grey', fontSize: 11}}>{Date()}</Text>
     </View>
-  );
-};
+    <View style={styles.row}>
+      <Card containerStyle={styles.card}>
+        <Text style={styles.descText}>Active Cases:</Text>
+        <Text style={styles.numCount}>{props.data.active}</Text>
+      </Card>
+      <Card containerStyle={styles.card}>
+        <Text style={styles.descText}>Confirmed Cases:</Text>
+        <Text style={styles.numCount}>{props.data.confirmed}</Text>
+      </Card>
+    </View>
+    <View style={styles.row}>
+      <Card containerStyle={styles.card}>
+        <Text style={styles.descText}>Deaths:</Text>
+        <Text style={styles.numCount}>{props.data.deaths}</Text>
+      </Card>
+      <Card containerStyle={styles.card}>
+        <Text style={styles.descText}>Recovered:</Text>
+        <Text style={styles.numCount}>{props.data.recovered}</Text>
+      </Card>
+    </View>
+  </View>
+);
 
 export default StatsCard;
 const styles = StyleSheet.create({

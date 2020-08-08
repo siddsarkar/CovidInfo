@@ -1,6 +1,6 @@
 import React from 'react';
 import {useNavigation} from '@react-navigation/native';
-import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import {Text, View, TouchableOpacity} from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {material} from 'react-native-typography';
 
@@ -16,7 +16,7 @@ const AppHeader = (props) => {
           justifyContent: 'center',
         }}>
         <TouchableOpacity
-          onPress={() => navigation.goBack()}
+          onPress={navigation.goBack}
           style={{
             // flex: 1,
             position: 'absolute',

@@ -1,31 +1,21 @@
 import React from 'react';
-import Icon from 'react-native-vector-icons/dist/AntDesign';
-import {Text} from 'react-native-elements';
-import {
-  StyleSheet,
-  StatusBar,
-  View,
-  TextInput,
-  TouchableOpacity,
-} from 'react-native';
+import {StyleSheet, StatusBar, View, TextInput} from 'react-native';
 
-const SearchBar = (props) => {
-  return (
-    <>
-      <StatusBar backgroundColor="#fff" barStyle="dark-content" />
-      <View style={styles.container}>
-        <View style={styles.inputWrapper}>
-          <TextInput
-            textAlign="center"
-            placeholder="search here"
-            onChangeText={props.onChangeTextHandler}
-            value={props.Value}
-          />
-        </View>
+const SearchBar = (props) => (
+  <>
+    <StatusBar backgroundColor="#fff" barStyle="dark-content" />
+    <View style={styles.container}>
+      <View style={styles.inputWrapper}>
+        <TextInput
+          textAlign="center"
+          placeholder="search here"
+          onChangeText={props.onChangeTextHandler}
+          value={props.Value}
+        />
       </View>
-    </>
-  );
-};
+    </View>
+  </>
+);
 
 export default SearchBar;
 

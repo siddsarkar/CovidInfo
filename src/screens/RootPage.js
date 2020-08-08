@@ -1,21 +1,12 @@
-import React, {Component} from 'react';
-import {
-  StatusBar,
-  View,
-  Dimensions,
-  FlatList,
-  ScrollView,
-  Text,
-  SafeAreaView,
-  StyleSheet,
-} from 'react-native';
-import {material} from 'react-native-typography';
+import React, { Component } from 'react';
+import { StatusBar, View, Dimensions, ScrollView, Text } from 'react-native';
+import { material } from 'react-native-typography';
 //custom
 import Header from './RootPage/Header';
 import InfoCards from './RootPage/InfoCards';
 import MenuCards from './RootPage/MenuCards';
 
-const {height, width} = Dimensions.get('window');
+const { height, width } = Dimensions.get('window');
 
 class RootPage extends Component {
   constructor(props) {
@@ -24,11 +15,11 @@ class RootPage extends Component {
   }
 
   render() {
-    const {navigation} = this.props;
+    const { navigation } = this.props;
     return (
       <>
         <StatusBar backgroundColor="#fff" barStyle="dark-content" />
-        <ScrollView style={{backgroundColor: '#fff'}}>
+        <ScrollView style={{ backgroundColor: '#fff' }}>
           <Header />
           <ScrollView
             horizontal
@@ -56,7 +47,7 @@ class RootPage extends Component {
             }}>
             <Text style={material.headline}>
               Hello,{' '}
-              <Text style={{...material.headline, fontWeight: '700'}}>
+              <Text style={{ ...material.headline, fontWeight: '700' }}>
                 Siddharth Sarkar!
               </Text>
             </Text>
@@ -81,10 +72,10 @@ class RootPage extends Component {
               marginVertical: 5,
               // backgroundColor: 'green',
             }}>
-            <Text style={{color: 'grey', ...material.caption}}>
+            <Text style={{ color: 'grey', ...material.caption }}>
               Designed and Developed By
             </Text>
-            <Text style={{color: 'grey', ...material.body1}}>
+            <Text style={{ color: 'grey', ...material.body1 }}>
               Siddharth@2020
             </Text>
           </View>

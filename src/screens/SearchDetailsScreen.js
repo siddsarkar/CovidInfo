@@ -1,12 +1,10 @@
 import React from 'react';
 import Icon from 'react-native-vector-icons/dist/AntDesign';
-import {Text, Avatar, Button} from 'react-native-elements';
-import {StyleSheet, StatusBar, View, SafeAreaView} from 'react-native';
-import {TouchableOpacity} from 'react-native-gesture-handler';
+import { StyleSheet, StatusBar, View, SafeAreaView, Text } from 'react-native';
+import { TouchableOpacity } from 'react-native-gesture-handler';
 
-export default function SearchDetailsScreen({route, navigation}) {
-  const {id} = route.params;
-  const {data} = route.params;
+export default function SearchDetailsScreen({ route, navigation }) {
+  const { data } = route.params;
 
   return (
     <>

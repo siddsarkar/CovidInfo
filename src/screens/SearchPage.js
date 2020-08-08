@@ -43,9 +43,9 @@ class SearchPage extends Component {
   makeRequest = () => {
     this.setState(this.setState({loading: true}), async () => {
       const API_URL = 'https://api.covid19india.org/data.json';
-      let res = await fetch(API_URL);
-      let info = await res.json();
-      let data = info.statewise;
+      const res = await fetch(API_URL);
+      const info = await res.json();
+      const data = info.statewise;
       this.setState({Data: data, loading: false});
     });
   };
@@ -62,127 +62,125 @@ class SearchPage extends Component {
           </View>
         ) : (
           <ScrollView style={{marginBottom: 10}}>
-            {this.state.Data.map((state) => {
-              return (
-                <Card
-                  containerStyle={{
-                    borderWidth: 0,
-                    padding: 0,
-                    shadowColor: '#000',
-                    shadowOffset: {
-                      width: 0,
-                      height: 2,
-                    },
-                    shadowOpacity: 0.25,
-                    shadowRadius: 3.84,
+            {this.state.Data.map((state) => (
+              <Card
+                containerStyle={{
+                  borderWidth: 0,
+                  padding: 0,
+                  shadowColor: '#000',
+                  shadowOffset: {
+                    width: 0,
+                    height: 2,
+                  },
+                  shadowOpacity: 0.25,
+                  shadowRadius: 3.84,
 
-                    elevation: 5,
-                  }}
-                  key={state.statecode}>
+                  elevation: 5,
+                }}
+                key={state.statecode}>
+                <Text
+                  style={{
+                    ...material.title,
+                    textAlign: 'center',
+                    padding: 5,
+                  }}>
+                  {state.state}-{state.statecode}
+                </Text>
+                <View
+                  style={{
+                    width: '100%',
+                    flexDirection: 'row',
+                    backgroundColor: 'lightyellow',
+                    padding: 5,
+                  }}>
+                  <Text style={material.subheading}>
+                    {' '}
+                    <Icon name="radio-button-on" color="red" /> Active
+                  </Text>
                   <Text
                     style={{
-                      ...material.title,
-                      textAlign: 'center',
-                      padding: 5,
+                      position: 'absolute',
+                      top: 5,
+                      right: 5,
+                      ...material.subheading,
                     }}>
-                    {state.state}-{state.statecode}
+                    {state.active}
                   </Text>
-                  <View
-                    style={{
-                      width: '100%',
-                      flexDirection: 'row',
-                      backgroundColor: 'lightyellow',
-                      padding: 5,
-                    }}>
-                    <Text style={material.subheading}>
-                      {' '}
-                      <Icon name="radio-button-on" color="red" /> Active
-                    </Text>
-                    <Text
-                      style={{
-                        position: 'absolute',
-                        top: 5,
-                        right: 5,
-                        ...material.subheading,
-                      }}>
-                      {state.active}
-                    </Text>
-                  </View>
-                  <View
-                    style={{
-                      width: '100%',
-                      flexDirection: 'row',
-                      backgroundColor: 'lightblue',
-                      padding: 5,
-                    }}>
-                    <Text style={material.subheading}>
-                      {' '}
-                      <Icon name="radio-button-on" color="red" /> Confirmed
-                    </Text>
-                    <Text
-                      style={{
-                        position: 'absolute',
-                        top: 5,
-                        right: 5,
-                        ...material.subheading,
-                      }}>
-                      {state.confirmed}
-                    </Text>
-                  </View>
-                  <View
-                    style={{
-                      width: '100%',
-                      flexDirection: 'row',
-                      backgroundColor: 'lightpink',
-                      padding: 5,
-                    }}>
-                    <Text style={material.subheading}>
-                      {' '}
-                      <Icon name="radio-button-on" color="red" /> Deaths
-                    </Text>
-                    <Text
-                      style={{
-                        position: 'absolute',
-                        top: 5,
-                        right: 5,
-                        ...material.subheading,
-                      }}>
-                      {state.deaths}
-                    </Text>
-                  </View>
-                  <View
-                    style={{
-                      width: '100%',
-                      flexDirection: 'row',
-                      backgroundColor: 'lightgreen',
-                      padding: 5,
-                    }}>
-                    <Text style={material.subheading}>
-                      {' '}
-                      <Icon name="radio-button-on" color="red" /> Recovered
-                    </Text>
-                    <Text
-                      style={{
-                        position: 'absolute',
-                        top: 5,
-                        right: 5,
-                        ...material.subheading,
-                      }}>
-                      {state.recovered}
-                    </Text>
-                  </View>
+                </View>
+                <View
+                  style={{
+                    width: '100%',
+                    flexDirection: 'row',
+                    backgroundColor: 'lightblue',
+                    padding: 5,
+                  }}>
+                  <Text style={material.subheading}>
+                    {' '}
+                    <Icon name="radio-button-on" color="red" /> Confirmed
+                  </Text>
                   <Text
                     style={{
-                      textAlign: 'center',
-                      ...material.caption,
-                      fontStyle: 'italic',
-                      marginVertical: 2,
+                      position: 'absolute',
+                      top: 5,
+                      right: 5,
+                      ...material.subheading,
                     }}>
-                    updated to: {state.lastupdatedtime}
+                    {state.confirmed}
                   </Text>
-                </Card>
-              );
-            })}
+                </View>
+                <View
+                  style={{
+                    width: '100%',
+                    flexDirection: 'row',
+                    backgroundColor: 'lightpink',
+                    padding: 5,
+                  }}>
+                  <Text style={material.subheading}>
+                    {' '}
+                    <Icon name="radio-button-on" color="red" /> Deaths
+                  </Text>
+                  <Text
+                    style={{
+                      position: 'absolute',
+                      top: 5,
+                      right: 5,
+                      ...material.subheading,
+                    }}>
+                    {state.deaths}
+                  </Text>
+                </View>
+                <View
+                  style={{
+                    width: '100%',
+                    flexDirection: 'row',
+                    backgroundColor: 'lightgreen',
+                    padding: 5,
+                  }}>
+                  <Text style={material.subheading}>
+                    {' '}
+                    <Icon name="radio-button-on" color="red" /> Recovered
+                  </Text>
+                  <Text
+                    style={{
+                      position: 'absolute',
+                      top: 5,
+                      right: 5,
+                      ...material.subheading,
+                    }}>
+                    {state.recovered}
+                  </Text>
+                </View>
+                <Text
+                  style={{
+                    textAlign: 'center',
+                    ...material.caption,
+                    fontStyle: 'italic',
+                    marginVertical: 2,
+                  }}>
+                  updated to: {state.lastupdatedtime}
+                </Text>
+              </Card>
+            ))}
           </ScrollView>
         )}
       </>
