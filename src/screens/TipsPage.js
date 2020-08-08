@@ -31,7 +31,7 @@ const TipsPage = () => {
         pagingEnabled
         data={DATA}
         renderItem={renderItem}
-        keyExtractor={(item) => item.source}
+        keyExtractor={(item) => item.id}
       />
     </SafeAreaView>
   );

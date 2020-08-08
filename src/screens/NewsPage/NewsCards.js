@@ -37,7 +37,6 @@ export default class NewsCards extends Component {
       // let newdata = data.articles.slice(0, 5);
       this.setState({ news: newdata, cardloading: false });
     });
-    console.log('makerwquest');
   };
   makeRequestGlobalNews = () => {
     this.setState(this.setState({ cardloading: true, news: [] }), async () => {
@@ -53,7 +52,6 @@ export default class NewsCards extends Component {
       // let newdata = data.articles.slice(0, 5);
       this.setState({ news: newdata, cardloading: false });
     });
-    console.log('makerwquesGlobalt');
   };
   switchHandler = () => {
     if (this.state.isLocal) {
@@ -63,7 +61,6 @@ export default class NewsCards extends Component {
     } else if (this.state.isLocal == false) {
       this.setState(this.setState({ isLocal: true }), () => this.makeRequest());
     }
-    console.log(this.state.isLocal);
   };
   render() {
     return (

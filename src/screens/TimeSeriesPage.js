@@ -23,7 +23,6 @@ class TimeSeriesPage extends Component {
 
   componentDidMount() {
     this.makeRequest();
-    console.log((height * 30) / 100 + ' ' + width);
   }
 
   makeRequest = () => {
@@ -32,7 +31,7 @@ class TimeSeriesPage extends Component {
       const res = await fetch(API_URL);
       const info = await res.json();
       const data = info.cases_time_series;
-      this.setState({ Data: data.reverse().slice(0, 10), loading: false });
+      this.setState({ Data: data.reverse().slice(0, 30), loading: false });
     });
   };
   render() {
