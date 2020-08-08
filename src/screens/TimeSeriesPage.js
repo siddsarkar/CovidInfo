@@ -32,7 +32,7 @@ class TimeSeriesPage extends Component {
       const res = await fetch(API_URL);
       const info = await res.json();
       const data = info.cases_time_series;
-      this.setState({ Data: data.reverse(), loading: false });
+      this.setState({ Data: data.reverse().slice(0, 10), loading: false });
     });
   };
   render() {
@@ -71,9 +71,8 @@ class TimeSeriesPage extends Component {
         ) : (
           <ScrollView>
             {this.state.Data.map((day) => (
-              <>
+              <View key={day.date}>
                 <View
-                  key={day.date}
                   style={{
                     height: 200,
                     width: '100%',
@@ -181,11 +180,14 @@ class TimeSeriesPage extends Component {
                   <View //datetbox
                     style={{
                       left: 20,
-                      top: 72,
+                      top: 65,
                       position: 'absolute',
-                      height: 70,
+                      height: 80,
                       width: 80,
-                      // backgroundColor: 'pink',
+                      borderRadius: 40,
+                      backgroundColor: 'pink',
+                      justifyContent: 'center',
+                      alignItems: 'center',
                     }}>
                     <Text
                       style={{
@@ -198,7 +200,7 @@ class TimeSeriesPage extends Component {
                     </Text>
                   </View>
                 </View>
-              </>
+              </View>
             ))}
           </ScrollView>
         )}

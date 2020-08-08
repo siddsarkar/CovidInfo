@@ -1,12 +1,10 @@
 import React, { Component } from 'react';
-import { StatusBar, View, Dimensions, ScrollView, Text } from 'react-native';
+import { StatusBar, View, ScrollView, Text } from 'react-native';
 import { material } from 'react-native-typography';
 //custom
 import Header from './RootPage/Header';
 import InfoCards from './RootPage/InfoCards';
 import MenuCards from './RootPage/MenuCards';
-
-const { height, width } = Dimensions.get('window');
 
 class RootPage extends Component {
   constructor(props) {

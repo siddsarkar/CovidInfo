@@ -107,7 +107,7 @@ export default class NewsCards extends Component {
               />
             }>
             {this.state.news.map((item) => (
-              <View key={item.publishedAt} style={{ padding: 10 }}>
+              <View key={item.url} style={{ padding: 10 }}>
                 <Card
                   containerStyle={{
                     backgroundColor: '#DCDCDC',
