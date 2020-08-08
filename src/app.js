@@ -1,18 +1,18 @@
 // backup
 import 'react-native-gesture-handler';
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import SplashScreen from 'react-native-splash-screen';
-import {NavigationContainer} from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack';
-import {createDrawerNavigator} from '@react-navigation/drawer';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 
 //import Screens
 import RootPage from './screens/RootPage';
 import NewsPageNavigator from './screens/NewsPage';
 import SearchPageNavigator from './screens/SearchPage';
 import TimeSeriesPage from './screens/TimeSeriesPage';
+import TipsPage from './screens/TipsPage';
 
-SplashScreen.hide();
 const Drawer = createDrawerNavigator();
 const MainStack = createStackNavigator();
 
@@ -28,7 +28,7 @@ function MainPageNavigator() {
       <MainStack.Screen name="Search" component={SearchPageNavigator} />
       {/* <MainStack.Screen name="Stats" component={StatsPage}/> */}
       <MainStack.Screen name="Time" component={TimeSeriesPage} />
-      {/* <MainStack.Screen name="Hospitals" component={HospitalsPage}/> */}
+      <MainStack.Screen name="Tips" component={TipsPage} />
       {/* <MainStack.Screen name="Links" component={LinksPage}/> */}
     </MainStack.Navigator>
   );
@@ -38,6 +38,7 @@ export default function App() {
   const [initRender, setInitRender] = useState(true);
 
   useEffect(() => {
+    SplashScreen.hide();
     setInitRender(false);
   }, [initRender]);
 
@@ -45,7 +46,7 @@ export default function App() {
     <NavigationContainer>
       <Drawer.Navigator
         initialRouteName="MainPageNavigator"
-        drawerStyle={{width: initRender ? null : '70%'}}>
+        drawerStyle={{ width: initRender ? null : '70%' }}>
         <Drawer.Screen name="MainPageNavigator" component={MainPageNavigator} />
       </Drawer.Navigator>
     </NavigationContainer>

@@ -4,92 +4,88 @@ import { Image } from 'react-native-elements';
 
 const InfoCards = () => (
   <>
-    <TouchableOpacity
-      style={{
-        justifyContent: 'center',
-        alignItems: 'center',
-        margin: 0,
-        padding: 0,
-        height: 125,
-        //   backgroundColor: 'blue',
-        borderWidth: 0,
-        borderRadius: 7,
-        width: 350,
-        marginRight: 10,
-        shadowColor: '#000',
-        shadowOffset: {
-          width: 0,
-          height: 3,
-        },
-        shadowOpacity: 0.27,
-        shadowRadius: 4.65,
-
-        elevation: 6,
-      }}>
+    <TouchableOpacity>
       <Image
         resizeMode="cover"
         containerStyle={{
-          width: '100%',
-          height: '100%',
           borderRadius: 7,
+          backgroundColor: 'red',
+          justifyContent: 'center',
+          alignItems: 'center',
           margin: 0,
           padding: 0,
-        }}
-        source={require('../../assets/index.jpeg')}
-        PlaceholderContent={<ActivityIndicator />}
-      />
-    </TouchableOpacity>
-    <TouchableOpacity
-      style={{
-        margin: 0,
-        padding: 0,
-        height: 125,
-        //   backgroundColor: '#3B3B98',
-        borderWidth: 0,
-        borderRadius: 7,
-        width: 350,
-        marginRight: 10,
-      }}>
-      <Image
-        resizeMode="cover"
-        containerStyle={{
-          width: '100%',
-          height: '100%',
-          borderRadius: 7,
-          margin: 0,
-          padding: 0,
-        }}
-        source={{
-          uri: 'https://dcmsme.gov.in/Awareness_corona/covid-19-banner.jpg',
-        }}
-        PlaceholderContent={<ActivityIndicator />}
-      />
-    </TouchableOpacity>
-    <TouchableOpacity
-      style={{
-        margin: 0,
-        padding: 0,
-        height: 125,
-        //   backgroundColor: 'grey',
-        borderWidth: 0,
-        borderRadius: 7,
-        width: 350,
-        marginRight: 10,
-      }}>
-      <Image
-        resizeMode="cover"
-        containerStyle={{
-          width: '100%',
-          height: '100%',
-          borderRadius: 7,
-          margin: 0,
-          padding: 0,
+          height: 125,
+          borderWidth: 0,
+          width: 350,
+          marginRight: 10,
         }}
         source={{
           uri:
-            'https://glasscock.rice.edu/sites/default/files/COVID19%20Banner.jpg',
+            'https://transformingindia.mygov.in/wp-content/uploads/2020/03/TI_Covid-19.jpg',
         }}
-        PlaceholderContent={<ActivityIndicator />}
+        PlaceholderContent={
+          <ActivityIndicator
+            style={{ height: '100%' }}
+            size="large"
+            color="black"
+          />
+        }
+      />
+    </TouchableOpacity>
+    <TouchableOpacity>
+      <Image
+        resizeMode="cover"
+        containerStyle={{
+          borderRadius: 7,
+          backgroundColor: 'red',
+          justifyContent: 'center',
+          alignItems: 'center',
+          margin: 0,
+          padding: 0,
+          height: 125,
+          borderWidth: 0,
+          width: 350,
+          marginRight: 10,
+        }}
+        source={{
+          uri:
+            'https://transformingindia.mygov.in/wp-content/uploads/2019/05/Banner_Final.jpg',
+        }}
+        PlaceholderContent={
+          <ActivityIndicator
+            style={{ height: '100%' }}
+            size="large"
+            color="black"
+          />
+        }
+      />
+    </TouchableOpacity>
+    <TouchableOpacity>
+      <Image
+        resizeMode="cover"
+        containerStyle={{
+          borderRadius: 7,
+          backgroundColor: 'red',
+          justifyContent: 'center',
+          alignItems: 'center',
+          margin: 0,
+          padding: 0,
+          height: 125,
+          borderWidth: 0,
+          width: 350,
+          marginRight: 10,
+        }}
+        source={{
+          uri:
+            'https://transformingindia.mygov.in/wp-content/uploads/2020/05/AatmaNirbharBharat-Abhiyan.jpg',
+        }}
+        PlaceholderContent={
+          <ActivityIndicator
+            style={{ height: '100%' }}
+            size="large"
+            color="black"
+          />
+        }
       />
     </TouchableOpacity>
   </>

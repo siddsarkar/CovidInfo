@@ -1,14 +1,49 @@
 import { View, Text, TouchableOpacity } from 'react-native';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { Avatar } from 'react-native-elements';
+import { Avatar, Divider } from 'react-native-elements';
 import { material } from 'react-native-typography';
 
 const MenuCards = ({ navigation }) => {
+  const [Data, setData] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  useEffect(() => {
+    getData();
+  }, []);
+
+  const getData = async () => {
+    let res = await fetch('https://covid19.mathdro.id/api');
+    let data = await res.json();
+    setData(data);
+    setIsLoading(false);
+  };
+
+  // const cured = Data.recovered.value;
+  // const deaths = Data.deaths.value;
+  const getWidth = (x) => {
+    if (isLoading) {
+      return 0;
+    } else {
+      if (x == 'deaths') {
+        const num = Math.floor(
+          (Data.deaths.value / Data.confirmed.value) * 100,
+        );
+        const percent = num + '%';
+        return percent;
+      } else if (x == 'recovered') {
+        const num = Math.floor(
+          (Data.recovered.value / Data.confirmed.value) * 100,
+        );
+        const percent = num + '%';
+        return percent;
+      }
+    }
+  };
+
   return (
     <>
       <View style={{ flexDirection: 'row', height: 95, marginBottom: 10 }}>
-        <TouchableOpacity
+        <TouchableOpacity //LATEST NEWS
           onPress={() => navigation.push('News')}
           style={{
             backgroundColor: '#25CCF7',
@@ -55,7 +90,7 @@ const MenuCards = ({ navigation }) => {
             NEWS
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity
+        <TouchableOpacity //GLOBAL STATS
           style={{
             backgroundColor: '#EAB543',
             borderWidth: 0,
@@ -101,7 +136,8 @@ const MenuCards = ({ navigation }) => {
       </View>
 
       <View style={{ flexDirection: 'row', height: 95, marginBottom: 10 }}>
-        <TouchableOpacity
+        <TouchableOpacity //SAFETY TIPS
+          onPress={() => navigation.push('Tips')}
           style={{
             backgroundColor: '#3B3B98',
             borderWidth: 0,
@@ -143,7 +179,7 @@ const MenuCards = ({ navigation }) => {
             TIPS
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity
+        <TouchableOpacity //DAYWISE CASES
           onPress={() => navigation.push('Time')}
           style={{
             backgroundColor: '#82589F',
@@ -189,7 +225,7 @@ const MenuCards = ({ navigation }) => {
         </TouchableOpacity>
       </View>
       <View style={{ flexDirection: 'row', height: 95, marginBottom: 10 }}>
-        <TouchableOpacity
+        <TouchableOpacity //IMPORTANT LINKS
           style={{
             backgroundColor: '#BDC581',
             borderWidth: 0,
@@ -232,7 +268,7 @@ const MenuCards = ({ navigation }) => {
             LINKS
           </Text>
         </TouchableOpacity>
-        <TouchableOpacity
+        <TouchableOpacity //DATA SEARCH
           onPress={() => navigation.push('Search')}
           style={{
             backgroundColor: '#58B19F',
@@ -279,7 +315,7 @@ const MenuCards = ({ navigation }) => {
       </View>
 
       <View style={{ flexDirection: 'row', height: 95, marginTop: 15 }}>
-        <TouchableOpacity
+        <TouchableOpacity // How Are You Feeling Today?
           style={{
             backgroundColor: '#2C3A47',
             borderWidth: 0,
@@ -331,7 +367,7 @@ const MenuCards = ({ navigation }) => {
         </TouchableOpacity>
       </View>
       <View style={{ flexDirection: 'row', height: 300, marginTop: 25 }}>
-        <TouchableOpacity
+        <TouchableOpacity //  Situation (Global)
           style={{
             backgroundColor: '#CAD3C8',
             borderWidth: 0,
@@ -367,6 +403,129 @@ const MenuCards = ({ navigation }) => {
               (Global)
             </Text>
             <Icon name="chevron-forward" size={30} color="#576574" />
+          </View>
+          <View style={{ marginBottom: 10 }}>
+            <View
+              style={{
+                width: '100%',
+                flexDirection: 'row',
+
+                padding: 5,
+              }}>
+              <Text style={material.subheading}>
+                {' '}
+                <Icon name="radio-button-on" color="green" /> Recovered
+              </Text>
+              <Text
+                style={{
+                  position: 'absolute',
+                  top: 5,
+                  right: 20,
+                  ...material.subheading,
+                }}>
+                {isLoading ? null : Data.recovered.value}
+              </Text>
+            </View>
+            <View style={{ margin: 10, marginHorizontal: 20 }}>
+              <Divider
+                style={{
+                  backgroundColor: 'white',
+                  borderRadius: 5,
+                  height: 10,
+                  width: '100%',
+                }}>
+                <Divider
+                  style={{
+                    backgroundColor: 'green',
+                    borderRadius: 5,
+                    height: 10,
+                    width: getWidth('recovered'),
+                  }}
+                />
+              </Divider>
+            </View>
+          </View>
+          <View style={{ marginBottom: 10 }}>
+            <View
+              style={{
+                width: '100%',
+                flexDirection: 'row',
+
+                padding: 5,
+              }}>
+              <Text style={material.subheading}>
+                {' '}
+                <Icon name="radio-button-on" color="red" /> Deaths
+              </Text>
+              <Text
+                style={{
+                  position: 'absolute',
+                  top: 5,
+                  right: 20,
+                  ...material.subheading,
+                }}>
+                {isLoading ? null : Data.deaths.value}
+              </Text>
+            </View>
+            <View style={{ margin: 10, marginHorizontal: 20 }}>
+              <Divider
+                style={{
+                  backgroundColor: 'white',
+                  borderRadius: 5,
+                  height: 10,
+                  width: '100%',
+                }}>
+                <Divider
+                  style={{
+                    backgroundColor: 'red',
+                    borderRadius: 5,
+                    height: 10,
+                    width: getWidth('deaths'),
+                  }}
+                />
+              </Divider>
+            </View>
+          </View>
+          <View>
+            <View
+              style={{
+                width: '100%',
+                flexDirection: 'row',
+
+                padding: 5,
+              }}>
+              <Text style={material.subheading}>
+                {' '}
+                <Icon name="radio-button-on" color="yellow" /> Confirmed
+              </Text>
+              <Text
+                style={{
+                  position: 'absolute',
+                  top: 5,
+                  right: 20,
+                  ...material.subheading,
+                }}>
+                {isLoading ? null : Data.confirmed.value}
+              </Text>
+            </View>
+            <View style={{ margin: 10, marginHorizontal: 20 }}>
+              <Divider
+                style={{
+                  backgroundColor: 'white',
+                  borderRadius: 5,
+                  height: 10,
+                  width: '100%',
+                }}>
+                <Divider
+                  style={{
+                    backgroundColor: 'yellow',
+                    borderRadius: 5,
+                    height: 10,
+                    width: '100%',
+                  }}
+                />
+              </Divider>
+            </View>
           </View>
         </TouchableOpacity>
       </View>
