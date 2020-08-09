@@ -7,11 +7,6 @@ import InfoCards from './RootPage/InfoCards';
 import MenuCards from './RootPage/MenuCards';
 
 class RootPage extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-
   render() {
     const { navigation } = this.props;
     return (
@@ -46,7 +41,7 @@ class RootPage extends Component {
             <Text style={material.headline}>
               Hello,{' '}
               <Text style={{ ...material.headline, fontWeight: '700' }}>
-                Siddharth Sarkar!
+                Stranger !
               </Text>
             </Text>
           </View>
