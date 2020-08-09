@@ -28,7 +28,7 @@ export default class NewsCards extends Component {
   makeRequest = () => {
     this.setState(this.setState({ cardloading: true, news: [] }), async () => {
       const res = await fetch(
-        'http://newsapi.org/v2/top-headlines?' +
+        'https://newsapi.org/v2/top-headlines?' +
           'country=in&' +
           'apiKey=d1a2290192fa42ed85d67ee17caffc4f',
       );
@@ -41,7 +41,7 @@ export default class NewsCards extends Component {
   makeRequestGlobalNews = () => {
     this.setState(this.setState({ cardloading: true, news: [] }), async () => {
       const res = await fetch(
-        'http://newsapi.org/v2/everything?' +
+        'https://newsapi.org/v2/everything?' +
           'q=coronavirus&' +
           'from=2020-08-07&' +
           'sortBy=popularity&' +
