@@ -29,12 +29,12 @@ export default class NewsCards extends Component {
     this.setState(this.setState({ cardloading: true, news: [] }), async () => {
       const res = await fetch(
         'https://newsapi.org/v2/top-headlines?' +
+          'q=coronavirus&' +
           'country=in&' +
           'apiKey=d1a2290192fa42ed85d67ee17caffc4f',
       );
       const data = await res.json();
       const newdata = data.articles;
-      // let newdata = data.articles.slice(0, 5);
       this.setState({ news: newdata, cardloading: false });
     });
   };
@@ -49,7 +49,6 @@ export default class NewsCards extends Component {
       );
       const data = await res.json();
       const newdata = data.articles;
-      // let newdata = data.articles.slice(0, 5);
       this.setState({ news: newdata, cardloading: false });
     });
   };
@@ -92,6 +91,7 @@ export default class NewsCards extends Component {
           </View>
         ) : (
           <ScrollView
+            onScrollEndDrag={() => this.makeRequestGlobalNews()}
             style={{ marginHorizontal: 10 }}
             refreshControl={
               <RefreshControl
@@ -133,9 +133,7 @@ export default class NewsCards extends Component {
                   />
                   <View style={{ padding: 10 }}>
                     <Text style={material.caption}>{item.publishedAt}</Text>
-                    <Text style={material.headline}>
-                      {item.title.substring(0, 50)}
-                    </Text>
+                    <Text style={material.headline}>{item.title}</Text>
                     <Divider style={{ marginVertical: 5 }} />
 
                     <Text style={material.body1}>{item.content}</Text>
@@ -144,15 +142,10 @@ export default class NewsCards extends Component {
                         this.props.navigation.push('article', { url: item.url })
                       }
                       buttonStyle={{
-                        width: 100,
+                        width: '100%',
                         marginTop: 10,
-                        // padding: 5,
-                        // borderRadius: 0,
-                        // marginLeft: 0,
-                        // marginRight: 0,
-                        // marginBottom: 0,
                       }}
-                      title="VIEW NOW"
+                      title="READ NOW"
                     />
                   </View>
                 </Card>

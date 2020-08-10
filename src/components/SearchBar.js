@@ -1,21 +1,35 @@
 import React from 'react';
-import {StyleSheet, StatusBar, View, TextInput} from 'react-native';
+import { StyleSheet, StatusBar, View, TextInput } from 'react-native';
+import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import { useNavigation } from '@react-navigation/native';
 
-const SearchBar = (props) => (
-  <>
-    <StatusBar backgroundColor="#fff" barStyle="dark-content" />
-    <View style={styles.container}>
-      <View style={styles.inputWrapper}>
-        <TextInput
-          textAlign="center"
-          placeholder="search here"
-          onChangeText={props.onChangeTextHandler}
-          value={props.Value}
+const SearchBar = (props) => {
+  const navigation = useNavigation();
+  return (
+    <>
+      <StatusBar backgroundColor="#fff" barStyle="dark-content" />
+      <View style={styles.container}>
+        <Icon
+          onPress={navigation.goBack}
+          name="keyboard-backspace"
+          size={24}
+          color="#000"
         />
+        <View style={styles.inputWrapper}>
+          <TextInput
+            onSubmitEditing={props.search}
+            returnKeyType="search"
+            textAlign="center"
+            placeholder="search here"
+            onChangeText={props.onChangeTextHandler}
+            value={props.Value}
+          />
+        </View>
+        <Icon onPress={props.clear} name="delete" size={24} color="#000" />
       </View>
-    </View>
-  </>
-);
+    </>
+  );
+};
 
 export default SearchBar;
 
@@ -41,5 +55,6 @@ const styles = StyleSheet.create({
     height: 40,
     borderRadius: 20,
     backgroundColor: 'lightgrey',
+    marginHorizontal: 10,
   },
 });

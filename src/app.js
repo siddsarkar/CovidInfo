@@ -11,6 +11,7 @@ import RootPage from './screens/RootPage';
 import NewsPageNavigator from './screens/NewsPage';
 import SearchPageNavigator from './screens/SearchPage';
 import TimeSeriesPage from './screens/TimeSeriesPage';
+import GlobalPage from './screens/GlobalPage';
 import TipsPage from './screens/TipsPage';
 
 const Drawer = createDrawerNavigator();
@@ -26,7 +27,7 @@ function MainPageNavigator() {
       <MainStack.Screen name="Root" component={RootPage} />
       <MainStack.Screen name="News" component={NewsPageNavigator} />
       <MainStack.Screen name="Search" component={SearchPageNavigator} />
-      {/* <MainStack.Screen name="Stats" component={StatsPage}/> */}
+      <MainStack.Screen name="Global" component={GlobalPage} />
       <MainStack.Screen name="Time" component={TimeSeriesPage} />
       <MainStack.Screen name="Tips" component={TipsPage} />
       {/* <MainStack.Screen name="Links" component={LinksPage}/> */}

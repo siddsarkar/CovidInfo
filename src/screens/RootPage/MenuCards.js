@@ -91,6 +91,7 @@ const MenuCards = ({ navigation }) => {
           </Text>
         </TouchableOpacity>
         <TouchableOpacity //GLOBAL STATS
+          onPress={() => navigation.push('Global')}
           style={{
             backgroundColor: '#EAB543',
             borderWidth: 0,

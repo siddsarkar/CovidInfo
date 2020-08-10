@@ -35,7 +35,6 @@ export default class HomeScreen extends Component {
   };
 
   componentDidMount() {
-    SplashScreen.hide();
     this.makerequest();
   }
 
