@@ -1,8 +1,8 @@
 import React from 'react';
-import {useNavigation} from '@react-navigation/native';
-import {StyleSheet, Text, View, TouchableOpacity} from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {material} from 'react-native-typography';
+import { material } from 'react-native-typography';
 
 const Header = () => {
   const navigation = useNavigation();
@@ -24,18 +24,20 @@ const Header = () => {
             justifyContent: 'center',
             alignItems: 'center',
           }}>
-          <Text style={{...material.headline, fontSize: 26, fontWeight: '600'}}>
+          <Text
+            style={{ ...material.headline, fontSize: 26, fontWeight: '600' }}>
             COVID-19
           </Text>
         </View>
-        <View
+        <TouchableOpacity
+          onPress={() => navigation.navigate('Search')}
           style={{
             flex: 1,
             justifyContent: 'center',
             alignItems: 'center',
           }}>
-          <Icon name="notifications-outline" color="#000" size={35} />
-        </View>
+          <Icon name="search" color="#000" size={35} />
+        </TouchableOpacity>
       </View>
     </>
   );
