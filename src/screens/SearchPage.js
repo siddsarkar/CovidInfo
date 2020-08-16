@@ -43,14 +43,12 @@ class SearchPage extends Component {
   }
 
   makeRequest = () => {
-    this.setState(this.setState({ loading: true }), () => {
-      setTimeout(async () => {
-        const API_URL = 'https://api.covid19india.org/data.json';
-        let res = await fetch(API_URL);
-        let info = await res.json();
-        let data = info.statewise;
-        this.setState({ DATA: data, loading: false });
-      }, 1000);
+    this.setState(this.setState({ loading: true }), async () => {
+      const API_URL = 'https://api.covid19india.org/data.json';
+      let res = await fetch(API_URL);
+      let info = await res.json();
+      let data = info.statewise;
+      this.setState({ DATA: data, loading: false });
     });
   };
 

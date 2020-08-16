@@ -1,4 +1,4 @@
-import { View, Text, TouchableOpacity } from 'react-native';
+import { View, Text, TouchableOpacity, Linking } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { Avatar, Divider } from 'react-native-elements';
@@ -122,7 +122,7 @@ const MenuCards = ({ navigation }) => {
               top: 30,
               position: 'absolute',
             }}>
-            GLOBAL
+            LOCATION
           </Text>
           <Text
             style={{
@@ -131,7 +131,7 @@ const MenuCards = ({ navigation }) => {
               left: 5,
               ...material.display2White,
             }}>
-            STATS
+            INFO
           </Text>
         </TouchableOpacity>
       </View>
@@ -227,6 +227,7 @@ const MenuCards = ({ navigation }) => {
       </View>
       <View style={{ flexDirection: 'row', height: 95, marginBottom: 10 }}>
         <TouchableOpacity //IMPORTANT LINKS
+          onPress={() => navigation.push('Links')}
           style={{
             backgroundColor: '#BDC581',
             borderWidth: 0,
@@ -317,6 +318,11 @@ const MenuCards = ({ navigation }) => {
 
       <View style={{ flexDirection: 'row', height: 95, marginTop: 15 }}>
         <TouchableOpacity // How Are You Feeling Today?
+          onPress={() =>
+            Linking.openURL(
+              'https://www.who.int/news-room/photo-story/photo-story-detail/self-care-during-covid-19',
+            )
+          }
           style={{
             backgroundColor: '#2C3A47',
             borderWidth: 0,
@@ -343,7 +349,7 @@ const MenuCards = ({ navigation }) => {
             size="medium"
             source={{
               uri:
-                'https://s3.amazonaws.com/uifaces/faces/twitter/ladylexy/128.jpg',
+                'https://www.todayshospitalist.com/wp-content/uploads/2010/06/drugseeking-300x350.jpg',
             }}
             rounded
           />
@@ -403,7 +409,7 @@ const MenuCards = ({ navigation }) => {
               </Text>{' '}
               (Global)
             </Text>
-            <Icon name="chevron-forward" size={30} color="#576574" />
+            {/* <Icon name="chevron-forward" size={30} color="#576574" /> */}
           </View>
           <View style={{ marginBottom: 10 }}>
             <View

@@ -39,9 +39,9 @@ class RootPage extends Component {
               marginBottom: 15,
             }}>
             <Text style={material.headline}>
-              Hello,{' '}
+              Stay Home,{' '}
               <Text style={{ ...material.headline, fontWeight: '700' }}>
-                Stranger !
+                Stay safe !
               </Text>
             </Text>
           </View>

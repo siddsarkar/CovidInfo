@@ -1,10 +1,13 @@
 import React from 'react';
-import { TouchableOpacity, ActivityIndicator } from 'react-native';
+import { TouchableOpacity, ActivityIndicator, Linking } from 'react-native';
 import { Image } from 'react-native-elements';
 
 const InfoCards = () => (
   <>
-    <TouchableOpacity>
+    <TouchableOpacity
+      onPress={() =>
+        Linking.openURL('https://transformingindia.mygov.in/covid-19/')
+      }>
       <Image
         resizeMode="cover"
         containerStyle={{
@@ -32,7 +35,10 @@ const InfoCards = () => (
         }
       />
     </TouchableOpacity>
-    <TouchableOpacity>
+    <TouchableOpacity
+      onPress={() =>
+        Linking.openURL('https://transformingindia.mygov.in/sectors/')
+      }>
       <Image
         resizeMode="cover"
         containerStyle={{
@@ -60,7 +66,12 @@ const InfoCards = () => (
         }
       />
     </TouchableOpacity>
-    <TouchableOpacity>
+    <TouchableOpacity
+      onPress={() =>
+        Linking.openURL(
+          'https://transformingindia.mygov.in/aatmanirbharbharat/',
+        )
+      }>
       <Image
         resizeMode="cover"
         containerStyle={{

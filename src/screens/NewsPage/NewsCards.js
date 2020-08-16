@@ -29,7 +29,7 @@ export default class NewsCards extends Component {
     this.setState(this.setState({ cardloading: true, news: [] }), async () => {
       const res = await fetch(
         'https://newsapi.org/v2/top-headlines?' +
-          'q=coronavirus&' +
+          // 'q=coronavirus&' +
           'country=in&' +
           'apiKey=d1a2290192fa42ed85d67ee17caffc4f',
       );
@@ -91,7 +91,6 @@ export default class NewsCards extends Component {
           </View>
         ) : (
           <ScrollView
-            onScrollEndDrag={() => this.makeRequestGlobalNews()}
             style={{ marginHorizontal: 10 }}
             refreshControl={
               <RefreshControl

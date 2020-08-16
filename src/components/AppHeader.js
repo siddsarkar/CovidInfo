@@ -1,8 +1,8 @@
 import React from 'react';
-import {useNavigation} from '@react-navigation/native';
-import {Text, View, TouchableOpacity} from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { Text, View, TouchableOpacity } from 'react-native';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {material} from 'react-native-typography';
+import { material } from 'react-native-typography';
 
 const AppHeader = (props) => {
   const navigation = useNavigation();
@@ -10,10 +10,12 @@ const AppHeader = (props) => {
   return (
     <>
       <View
+        {...props}
         style={{
           height: 55,
           backgroundColor: '#fff',
           justifyContent: 'center',
+          ...props.style,
         }}>
         <TouchableOpacity
           onPress={navigation.goBack}
@@ -34,7 +36,8 @@ const AppHeader = (props) => {
             alignItems: align,
             marginRight: 20,
           }}>
-          <Text style={{...material.headline, fontSize: 26, fontWeight: '600'}}>
+          <Text
+            style={{ ...material.headline, fontSize: 26, fontWeight: '600' }}>
             {props.title || 'WEBVIEW'}
           </Text>
         </View>
