@@ -4,7 +4,7 @@
 
 ### What is the app for?
 
-- Thea app a project to explore the aspects of `React-Native` or `React` fremeworks.
+- This app is a project in aim to explore the aspects of `React-Native` or `React` fremeworks.
 - It provides the user with the current Covid-19 Information to the users location.
 
 ### Features
